@@ -58,7 +58,7 @@ export class FileUploader extends Component {
                                         owner_id: response.response?.doc.owner_id,
                                         id: response.response?.doc.id
                                     })
-                                    if (this.props.docIds.length === this.state.selectedFile.length) {
+                                    if (docs.length === this.state.selectedFile.length) {
                                         this.setState({
                                             isSuccess: true
                                         })
