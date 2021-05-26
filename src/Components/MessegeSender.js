@@ -9,14 +9,11 @@ export function randomInteger(min, max) {
 }
 
 export function createAttachments(docs) {
-    // if (Object.assign(docs).length === 0) {
-    //     return ""
-    // }
     let result = '&attachment=';
     for(let doc of docs) {
         result += `doc${doc.owner_id}_${doc.id},`
     }
-    console.log(result,docs)
+    console.log(docs)
     return result;
 }
 
@@ -35,7 +32,7 @@ export function createMessageRequest(text, userId, token, docs) {
     const params = `user_id=${userId}&random_id=${randomId}&message=${text}`;
     const method = "messages.send";
     const tokenUser = `access_token=${token}`
-    const attachments = createAttachments(docs)
+    const attachments = docs
     const version = "v=5.130"
     return "https://api.vk.com/method/"+ method +"?"+ params +"&"+ tokenUser + attachments + "&" + version;
 }

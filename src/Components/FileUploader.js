@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {randomInteger} from "./MessegeSender";
+import {createAttachments, randomInteger} from "./MessegeSender";
 import {UploadWarning} from "./UploadWarning";
 import "./FileUploader.css";
 import {getUploadMessageServerUrl} from "./MainPage";
@@ -66,6 +66,7 @@ export class FileUploader extends Component {
                         })
                 })
         }
+        this.props.docIds = createAttachments(this.props.docIds);
     }
 
 
