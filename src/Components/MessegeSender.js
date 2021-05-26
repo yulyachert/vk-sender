@@ -16,6 +16,7 @@ export function createAttachments(docs) {
     for(let doc of docs) {
         result += `doc${doc.owner_id}_${doc.id},`
     }
+    console.log(result)
     return result;
 }
 
@@ -73,11 +74,12 @@ export function MessageSender(props) {
         for (let user of props.csvArray) {
             const text = createMessageText(props.textTemplate, user)
             const request = createMessageRequest(text, user.id, props.token, props.docs)
+            console.log(request)
             sendMessageToOneUser(request, user.id)
-                .then(() => console.log('success'))
+                .then(() => console.log([...successUsers, ...failedUsers]))
         }
         downloadFile();
-    },[props, sendMessageToOneUser, downloadFile])
+    },[props, sendMessageToOneUser, downloadFile, successUsers, failedUsers])
 
     if (props.isVisible) {
         return null;
