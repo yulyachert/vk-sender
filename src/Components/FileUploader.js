@@ -66,7 +66,7 @@ export class FileUploader extends Component {
                         })
                 })
         }
-        this.props.docIds = createAttachments(this.props.docIds);
+        console.log(this.props.docIds)
     }
 
 
