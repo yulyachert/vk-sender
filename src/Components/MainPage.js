@@ -25,9 +25,9 @@ export function MainPage(props) {
     const [csvArray, setCsvArray] = useState([]);
     const [textTemplate, setTextTemplate] = useState('');
     const [accessToken, setAccessToken] = useState("");
-    const admin = process.env.NEXT_PUBLIC_ADMIN_ID;
-    const group = process.env.NEXT_PUBLIC_GROUP_ID;
-    const url = process.env.NEXT_PUBLIC_URL;
+    const admin = process.env.REACT_APP_ADMIN_ID;
+    const group = process.env.REACT_APP_GROUP_ID;
+    const url = process.env.REACT_APP_URL;
     const docIds = [];
     const appId = '7835983';
     const isAdmin = useCallback((id) => {
