@@ -25,14 +25,14 @@ export function MainPage(props) {
     const [csvArray, setCsvArray] = useState([]);
     const [textTemplate, setTextTemplate] = useState('');
     const [accessToken, setAccessToken] = useState("");
-    const envs = "176622518";
-    const group = "115514194";
+    const admin = process.env.ADMIN_ID;
+    const group = process.env.GROUP_ID;
     const url = 'http://192.168.1.81/';
     const docIds = [];
     const appId = '7835983';
     const isAdmin = useCallback((id) => {
-        return envs.includes(id);
-    }, [envs])
+        return admin.includes(id);
+    }, [admin])
     const regex = useMemo(() => {
         return /\d=(.+?)$/
     }, []);
