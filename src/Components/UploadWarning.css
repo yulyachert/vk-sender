@@ -1,0 +1,24 @@
+* {
+    font-family: "Segoe UI", sans-serif;
+}
+
+.upload_file_success_container {
+    margin-top: 50px;
+    background-color: darkolivegreen;
+    height: 70px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+}
+
+.upload_file {
+    margin: 0;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 0;
+}
