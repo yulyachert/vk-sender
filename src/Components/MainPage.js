@@ -46,7 +46,6 @@ export function MainPage(props) {
 
     const onAuthorization = useCallback((user) => {
         const userIdProp = user.uid;
-        console.log(admin, group, url)
         if (isAdmin(userIdProp)) {
             Cookies.set('userId', userIdProp, { expires: 1 });
             window.location = `https://oauth.vk.com/authorize?client_id=${appId}&group_ids=${group}&display=page&redirect_uri=${url}&scope=messages,photos,docs&response_type=token&v=5.130`;
