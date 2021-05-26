@@ -1,0 +1,31 @@
+* {
+    font-family: "Segoe UI", sans-serif;
+}
+
+.site-page-header {
+    background-color: cornflowerblue;
+    padding: 0 40px 0 40px;
+    margin: 0;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-page-header_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.site-page-header_text {
+    margin: 0;
+    font-size: 30px;
+    color: white;
+    padding-left: 10px;
+}
+
+.site-page-header_icon {
+    color: white;
+}
