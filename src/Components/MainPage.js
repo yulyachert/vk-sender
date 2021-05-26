@@ -45,6 +45,7 @@ export function MainPage(props) {
     },[props, regex, accessToken])
 
     const onAuthorization = useCallback((user) => {
+        console.log(user);
         const userIdProp = user.payload[1][0];
         if (isAdmin(userIdProp)) {
             Cookies.set('userId', userIdProp, { expires: 1 });
