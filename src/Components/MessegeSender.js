@@ -31,7 +31,6 @@ export function createMessageRequest(text, userId, token, docs) {
     const params = `user_id=${userId}&random_id=${randomId}&message=${text}`;
     const method = "messages.send";
     const tokenUser = `access_token=${token}`
-    console.log(docs);
     const attachments = createAttachments(docs)
     const version = "v=5.130"
     return "https://api.vk.com/method/"+ method +"?"+ params +"&"+ tokenUser + attachments + "&" + version;
@@ -39,7 +38,7 @@ export function createMessageRequest(text, userId, token, docs) {
 
 export function createResultFile(successResults, failedResults) {
     return `successResults: ${[...successResults]}
-    failedResults${[...failedResults]}`
+    failedResults:  ${[...failedResults]}`
 }
 
 export function MessageSender(props) {
