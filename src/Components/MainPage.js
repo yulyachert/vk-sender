@@ -27,7 +27,7 @@ export function MainPage(props) {
     const [accessToken, setAccessToken] = useState("");
     const admin = process.env.ADMIN_ID;
     const group = process.env.GROUP_ID;
-    const url = 'https://vk-sender.vercel.app/';
+    const url = process.env.URL;
     const docIds = [];
     const appId = '7835983';
     const isAdmin = useCallback((id) => {
@@ -45,14 +45,15 @@ export function MainPage(props) {
     },[props, regex, accessToken])
 
     const onAuthorization = useCallback((user) => {
-        if (isAdmin(user.uid)) {
-            Cookies.set('userId', user.uid, { expires: 1 });
+        const userIdProp = user.payload[1][0];
+        if (isAdmin(userIdProp)) {
+            Cookies.set('userId', userIdProp, { expires: 1 });
             window.location = `https://oauth.vk.com/authorize?client_id=${appId}&group_ids=${group}&display=page&redirect_uri=${url}&scope=messages,photos,docs&response_type=token&v=5.130`;
         } else {
             setIsError(true);
             setTimeout(() => setIsError(false), 3000)
         }
-    }, [isAdmin]);
+    }, [isAdmin, group, url]);
 
     return (
         <div className={"main-page"}>
