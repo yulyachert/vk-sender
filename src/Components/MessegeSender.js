@@ -38,7 +38,7 @@ export function createMessageRequest(text, userId, token, docs) {
 
 export function createResultFile(successResults, failedResults) {
     return `successResults: ${[...successResults]}
-    failedResults:  ${[...failedResults]}`
+    failedResults:  ${failedResults.map((id) => `https://vk.com/id${id}`)}`
 }
 
 export function MessageSender(props) {
