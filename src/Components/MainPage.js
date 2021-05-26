@@ -27,7 +27,7 @@ export function MainPage(props) {
     const [accessToken, setAccessToken] = useState("");
     const admin = process.env.ADMIN_ID;
     const group = process.env.GROUP_ID;
-    const url = 'http://192.168.1.81/';
+    const url = 'https://vk-sender.vercel.app/';
     const docIds = [];
     const appId = '7835983';
     const isAdmin = useCallback((id) => {
