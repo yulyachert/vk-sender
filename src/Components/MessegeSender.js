@@ -9,14 +9,14 @@ export function randomInteger(min, max) {
 }
 
 export function createAttachments(docs) {
-    if (Object.assign(docs).length === 0) {
-        return ""
-    }
+    // if (Object.assign(docs).length === 0) {
+    //     return ""
+    // }
     let result = '&attachment=';
     for(let doc of docs) {
         result += `doc${doc.owner_id}_${doc.id},`
     }
-    console.log(result)
+    console.log(result,docs)
     return result;
 }
 
@@ -74,12 +74,11 @@ export function MessageSender(props) {
         for (let user of props.csvArray) {
             const text = createMessageText(props.textTemplate, user)
             const request = createMessageRequest(text, user.id, props.token, props.docs)
-            console.log(request)
             sendMessageToOneUser(request, user.id)
-                .then(() => console.log([...successUsers, ...failedUsers]))
+                .then(() => console.log(''))
         }
-        downloadFile();
-    },[props, sendMessageToOneUser, downloadFile, successUsers, failedUsers])
+        setTimeout(() => downloadFile(), 3000);
+    },[props, sendMessageToOneUser, downloadFile])
 
     if (props.isVisible) {
         return null;
