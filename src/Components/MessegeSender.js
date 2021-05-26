@@ -13,7 +13,6 @@ export function createAttachments(docs) {
     for(let doc of docs) {
         result += `doc${doc.owner_id}_${doc.id},`
     }
-    console.log(docs)
     return result;
 }
 
@@ -32,7 +31,8 @@ export function createMessageRequest(text, userId, token, docs) {
     const params = `user_id=${userId}&random_id=${randomId}&message=${text}`;
     const method = "messages.send";
     const tokenUser = `access_token=${token}`
-    const attachments = docs
+    console.log(docs);
+    const attachments = createAttachments(docs)
     const version = "v=5.130"
     return "https://api.vk.com/method/"+ method +"?"+ params +"&"+ tokenUser + attachments + "&" + version;
 }

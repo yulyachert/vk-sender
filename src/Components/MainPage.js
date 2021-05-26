@@ -28,7 +28,7 @@ export function MainPage(props) {
     const admin = process.env.REACT_APP_ADMIN_ID;
     const group = process.env.REACT_APP_GROUP_ID;
     const url = process.env.REACT_APP_URL;
-    const docIds = [];
+    const [docIds, setDocIds] = useState([])
     const appId = '7835983';
     const isAdmin = useCallback((id) => {
         return admin.includes(id);
@@ -71,7 +71,7 @@ export function MainPage(props) {
             />
             <FileUploader
                 token={accessToken}
-                docIds={docIds}
+                setDocIds={setDocIds}
                 isVisible={props.isVisible}
             />
             <TemplateUploader

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {createAttachments, randomInteger} from "./MessegeSender";
+import {randomInteger} from "./MessegeSender";
 import {UploadWarning} from "./UploadWarning";
 import "./FileUploader.css";
 import {getUploadMessageServerUrl} from "./MainPage";
@@ -43,6 +43,7 @@ export class FileUploader extends Component {
     }
     onClickHandler = () => {
         const data = new FormData()
+        const docs = [];
         let href = "";
         for (let x = 0; x < this.state.selectedFile.length; x++) {
             getUploadMessageServerUrl(this.props.token, '176622518')
@@ -53,7 +54,7 @@ export class FileUploader extends Component {
                         .then( (response) => {
                             saveDocs(this.props.token, response.data.file)
                                 .then((response) => {
-                                    this.props.docIds.push({
+                                    docs.push({
                                         owner_id: response.response?.doc.owner_id,
                                         id: response.response?.doc.id
                                     })
@@ -66,7 +67,7 @@ export class FileUploader extends Component {
                         })
                 })
         }
-        console.log(this.props.docIds)
+        this.props.setDocIds(docs);
     }
 
 
